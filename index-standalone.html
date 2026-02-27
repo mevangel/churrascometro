@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Churrascômetro 🔥 Calculadora de Churrasco – Quanto de Carne por Pessoa?</title>
+  <meta name="description" content="A calculadora de churrasco mais completa do Brasil! Calcule carne, cerveja, carvão, acompanhamentos e estimativa de custo. Grátis, rápido e certeiro!">
+  <meta name="keywords" content="calculadora churrasco, churrascometro, quanto de carne por pessoa, carne churrasco, cerveja churrasco, carvão churrasco, picanha, costela, churrasco brasil">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🔥 Churrascômetro – Nunca Mais Vai Faltar Carne!">
+  <meta property="og:description" content="Calcule tudo para o churrasco perfeito: carne, cerveja, carvão, acompanhamentos e estimativa de custo. Grátis!">
+  <meta property="og:locale" content="pt_BR">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Churrascômetro","description":"Calculadora de churrasco mais completa do Brasil","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"pt-BR","offers":{"@type":"Offer","price":"0"}}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>/* ============================================================
+   CHURRASCÔMETRO – styles.css
+   Fire-themed dark design · Mobile-first · 2025
+   ============================================================ */
+
+/* ---------- CSS VARIABLES ---------- */
+:root {
+  --fire-1: #ff4500;
+  --fire-2: #ff6b35;
+  --fire-3: #ffa500;
+  --fire-4: #ffd700;
+  --dark-0: #0a0a0a;
+  --dark-1: #111111;
+  --dark-2: #1a1a1a;
+  --dark-3: #252525;
+  --dark-4: #333333;
+  --text-1: #ffffff;
+  --text-2: #dddddd;
+  --text-3: #aaaaaa;
+  --accent: #ff6b35;
+  --accent-glow: rgba(255, 107, 53, 0.35);
+  --card-bg: #1c1c1c;
+  --card-border: rgba(255, 107, 53, 0.18);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: 0.25s ease;
+  --shadow: 0 4px 24px rgba(0,0,0,0.45);
+}
+
+/* ---------- RESET ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--dark-1);
+  color: var(--text-1);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+h1, h2, h3 { line-height: 1.2; }
+
+/* ---------- CONTAINER ---------- */
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  background: linear-gradient(160deg, #1a0500 0%, #2d0a00 40%, #0d0d0d 100%);
+  overflow: hidden;
+  padding: 100px 20px 80px;
+  text-align: center;
+}
+
+/* Fire animation */
+.hero-flames {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.flame {
+  border-radius: 50% 50% 20% 20%;
+  animation: flicker infinite ease-in-out alternate;
+  transform-origin: bottom center;
+  opacity: 0.85;
+}
+
+.f1 { width: 60px; height: 90px;  background: radial-gradient(ellipse at bottom, #ffd700, #ff4500 60%, transparent); animation-duration: 1.8s; }
+.f2 { width: 80px; height: 110px; background: radial-gradient(ellipse at bottom, #ffd700, #ff6b35 60%, transparent); animation-duration: 2.1s; animation-delay: 0.3s; }
+.f3 { width: 100px;height: 140px; background: radial-gradient(ellipse at bottom, #ffb300, #ff4500 55%, transparent); animation-duration: 1.6s; animation-delay: 0.1s; }
+.f4 { width: 75px; height: 100px; background: radial-gradient(ellipse at bottom, #ffd700, #ff6b35 60%, transparent); animation-duration: 2.3s; animation-delay: 0.5s; }
+.f5 { width: 55px; height: 80px;  background: radial-gradient(ellipse at bottom, #ffd700, #ff4500 65%, transparent); animation-duration: 1.9s; animation-delay: 0.2s; }
+.f6 { width: 70px; height: 95px;  background: radial-gradient(ellipse at bottom, #ffb300, #ff6b35 60%, transparent); animation-duration: 2.0s; animation-delay: 0.7s; }
+
+@keyframes flicker {
+  0%   { transform: scaleX(1)    scaleY(1)    rotate(-1deg); }
+  25%  { transform: scaleX(0.95) scaleY(1.08) rotate(1.5deg); }
+  50%  { transform: scaleX(1.04) scaleY(0.96) rotate(-2deg); }
+  75%  { transform: scaleX(0.97) scaleY(1.05) rotate(1deg); }
+  100% { transform: scaleX(1.02) scaleY(0.98) rotate(-0.5deg); }
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.15);
+  border: 1px solid rgba(255, 107, 53, 0.4);
+  color: var(--fire-3);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 900;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.brand-accent {
+  background: linear-gradient(90deg, var(--fire-2), var(--fire-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--text-2);
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.hstat {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hstat span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--fire-3);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--fire-1), var(--fire-3));
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 16px 40px;
+  border-radius: 100px;
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.5), 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 45px rgba(255, 69, 0, 0.7), 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.hero-emoji {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-60%);
+  font-size: clamp(5rem, 12vw, 9rem);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(1px);
+}
+
+/* ============================================================
+   CALCULATOR SECTION
+   ============================================================ */
+.calc-wrap { padding: 60px 0 40px; }
+
+/* ---------- Steps nav ---------- */
+.steps-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 0;
+}
+
+.sn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.4;
+  transition: opacity var(--transition);
+}
+
+.sn-item.active, .sn-item.done { opacity: 1; }
+
+.sn-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--dark-3);
+  border: 2px solid var(--dark-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.sn-item.active .sn-dot {
+  background: linear-gradient(135deg, var(--fire-1), var(--fire-3));
+  border-color: var(--fire-2);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.sn-item.done .sn-dot {
+  background: var(--fire-3);
+  border-color: var(--fire-3);
+}
+
+.sn-item span { font-size: 0.75rem; font-weight: 600; color: var(--text-3); }
+.sn-item.active span, .sn-item.done span { color: var(--fire-3); }
+
+.sn-line {
+  flex: 1;
+  height: 2px;
+  background: var(--dark-4);
+  max-width: 80px;
+  transition: background var(--transition);
+  margin-top: -20px;
+}
+
+.sn-line.done { background: var(--fire-3); }
+
+/* ---------- Form Card ---------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+
+.card.hidden { display: none; }
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: var(--text-1);
+}
+
+/* ---------- Counters ---------- */
+.counters-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.ctr-group {
+  flex: 1;
+  min-width: 130px;
+}
+
+.ctr-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.ctr {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--dark-3);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.ctr-btn {
+  background: none;
+  border: none;
+  color: var(--fire-3);
+  font-size: 1.4rem;
+  font-weight: 700;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  transition: background var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.ctr-btn:hover { background: rgba(255, 107, 53, 0.15); }
+.ctr-btn:active { background: rgba(255, 107, 53, 0.3); }
+
+.ctr input[type="number"] {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  width: 0; /* flex takes over */
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.ctr input[type="number"]::-webkit-outer-spin-button,
+.ctr input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* ---------- Field groups ---------- */
+.field-group { margin-bottom: 24px; }
+
+.field-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.field-label em { font-style: normal; text-transform: none; font-weight: 400; color: var(--text-3); }
+
+/* ---------- Radio pills ---------- */
+.pill-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--dark-3);
+  border: 1.5px solid var(--dark-4);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  user-select: none;
+}
+
+.pill input[type="radio"] { display: none; }
+
+.pill:has(input:checked) {
+  background: rgba(255, 107, 53, 0.18);
+  border-color: var(--fire-2);
+  color: var(--fire-3);
+}
+
+/* ---------- Profile cards ---------- */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.pcard { cursor: pointer; }
+.pcard input[type="radio"] { display: none; }
+
+.pcard-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 12px;
+  background: var(--dark-3);
+  border: 2px solid var(--dark-4);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.pcard-body span { font-size: 1.8rem; }
+.pcard-body strong { font-size: 0.95rem; font-weight: 700; }
+.pcard-body small { font-size: 0.75rem; color: var(--text-3); }
+
+.pcard:has(input:checked) .pcard-body {
+  background: rgba(255, 107, 53, 0.12);
+  border-color: var(--fire-2);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+
+/* ---------- Checkbox pills ---------- */
+.check-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cpill {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--dark-3);
+  border: 1.5px solid var(--dark-4);
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  user-select: none;
+}
+
+.cpill input[type="checkbox"] { display: none; }
+
+.cpill:has(input:checked) {
+  background: rgba(255, 107, 53, 0.18);
+  border-color: var(--fire-2);
+  color: var(--fire-3);
+}
+
+/* ---------- Buttons ---------- */
+.btn-next, .btn-fire {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.03em;
+  margin-top: 8px;
+}
+
+.btn-next {
+  background: linear-gradient(135deg, var(--fire-1), var(--fire-3));
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.35);
+}
+
+.btn-next:hover, .btn-fire:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 69, 0, 0.5);
+}
+
+.btn-fire {
+  background: linear-gradient(135deg, var(--fire-1), var(--fire-4));
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.35);
+  font-size: 1.1rem;
+}
+
+.btn-pair { display: flex; gap: 12px; margin-top: 8px; }
+
+.btn-back {
+  background: var(--dark-3);
+  border: 1.5px solid var(--dark-4);
+  color: var(--text-2);
+  border-radius: var(--radius-sm);
+  padding: 14px 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+  white-space: nowrap;
+}
+
+.btn-back:hover { background: var(--dark-4); }
+.btn-pair .btn-fire { flex: 1; margin-top: 0; }
+
+/* ============================================================
+   RESULTS
+   ============================================================ */
+
+/* Score banner */
+.score-banner {
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1a0800, #2d1200);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+/* Quick summary chips */
+.quick-summary {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.qs-chip {
+  background: var(--dark-3);
+  border: 1px solid var(--card-border);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Result blocks */
+.res-block {
+  margin-bottom: 32px;
+}
+
+.res-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fire-3);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.res-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 12px;
+}
+
+.res-card {
+  background: var(--dark-3);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius-sm);
+  padding: 16px 14px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.res-card:hover {
+  border-color: var(--fire-2);
+  box-shadow: 0 0 18px rgba(255, 107, 53, 0.15);
+}
+
+.res-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--fire-1), var(--fire-3));
+  border-radius: 2px 2px 0 0;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.res-card:hover::before { opacity: 1; }
+
+.rc-icon { font-size: 1.8rem; margin-bottom: 6px; display: block; }
+.rc-name { font-size: 0.78rem; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.rc-amount { font-size: 1.4rem; font-weight: 900; color: var(--text-1); line-height: 1; margin-bottom: 2px; }
+.rc-unit { font-size: 0.8rem; color: var(--text-3); }
+.rc-note { font-size: 0.72rem; color: var(--fire-3); margin-top: 6px; font-weight: 600; }
+
+/* Budget box */
+.budget-box {
+  background: linear-gradient(135deg, #0f1a0a, #1a2d0f);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.budget-range {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #4caf50;
+  margin-bottom: 6px;
+}
+
+.budget-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.budget-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+}
+
+.budget-item span:last-child { font-weight: 700; color: #81c784; }
+
+.budget-note { font-size: 0.75rem; color: var(--text-3); margin-top: 6px; }
+
+/* Shopping list */
+.shopping-list {
+  background: var(--dark-3);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.sl-category {
+  margin-bottom: 16px;
+}
+
+.sl-category h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fire-3);
+  margin-bottom: 8px;
+}
+
+.sl-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.9rem;
+}
+
+.sl-item:last-child { border-bottom: none; }
+
+.sl-item span:last-child { font-weight: 700; color: var(--text-1); }
+
+/* Share buttons */
+.share-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sbtn {
+  flex: 1;
+  min-width: 120px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.sbtn:hover { transform: translateY(-1px); opacity: 0.9; }
+
+.sbtn.wpp   { background: #25d366; color: #fff; }
+.sbtn.copy  { background: var(--dark-4); color: var(--text-1); border: 1px solid var(--dark-4); }
+.sbtn.again { background: linear-gradient(135deg, var(--fire-1), var(--fire-3)); color: #fff; }
+
+/* Toast */
+.copy-toast {
+  text-align: center;
+  color: #4caf50;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.copy-toast.show { opacity: 1; }
+
+/* ============================================================
+   TIPS SECTION
+   ============================================================ */
+.tips-wrap {
+  background: var(--dark-2);
+  padding: 80px 0;
+}
+
+.section-h {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.tip {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.tip:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.15);
+}
+
+.tip-ico {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.tip h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--fire-3);
+}
+
+.tip p {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   FAQ SECTION
+   ============================================================ */
+.faq-wrap {
+  padding: 80px 0;
+  background: var(--dark-1);
+}
+
+.faq-list { max-width: 720px; margin: 0 auto; }
+
+.faq {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.faq summary {
+  padding: 18px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color var(--transition);
+}
+
+.faq summary:hover { color: var(--fire-3); }
+
+.faq summary::after {
+  content: '▼';
+  font-size: 0.7rem;
+  color: var(--text-3);
+  transition: transform var(--transition);
+}
+
+.faq[open] summary::after { transform: rotate(180deg); }
+
+.faq p {
+  padding: 0 20px 18px;
+  font-size: 0.88rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  border-top: 1px solid var(--card-border);
+  padding-top: 14px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--dark-0);
+  padding: 50px 0 30px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.footer-brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--fire-3);
+  margin-bottom: 8px;
+}
+
+.footer-copy {
+  margin-top: 20px;
+  font-size: 0.78rem;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   STEP TRANSITION
+   ============================================================ */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card:not(.hidden) { animation: fadeSlideIn 0.35s ease forwards; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 680px) {
+  .card { padding: 24px 18px; }
+  .counters-row { gap: 12px; }
+  .profile-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pcard-body { padding: 12px 6px; }
+  .pcard-body span { font-size: 1.4rem; }
+  .pcard-body strong { font-size: 0.8rem; }
+  .pcard-body small { display: none; }
+  .hero-stats { gap: 20px; }
+  .res-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .share-row { flex-direction: column; }
+  .sbtn { min-width: 0; }
+  .sn-line { max-width: 40px; }
+  .hero-emoji { display: none; }
+  .budget-breakdown { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 420px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .pcard-body { flex-direction: row; gap: 10px; text-align: left; padding: 14px; }
+  .pcard-body small { display: block; }
+}
+
+/* ============================================================
+   NUMBER ANIMATION
+   ============================================================ */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.rc-amount { animation: countUp 0.4s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-flames">
+    <div class="flame f1"></div><div class="flame f2"></div><div class="flame f3"></div>
+    <div class="flame f4"></div><div class="flame f5"></div><div class="flame f6"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">🇧🇷 A calculadora de churrasco do Brasil</div>
+    <h1 class="hero-title">Churrasô<span class="brand-accent">metro</span></h1>
+    <p class="hero-sub">Nunca mais vai faltar carne. Nunca mais vai sobrar cerveja.</p>
+    <div class="hero-stats">
+      <div class="hstat"><span>6</span> tipos de carne</div>
+      <div class="hstat"><span>5</span> bebidas calculadas</div>
+      <div class="hstat"><span>100%</span> grátis</div>
+    </div>
+    <a href="#calculadora" class="hero-cta">🔥 Calcular Meu Churrasco</a>
+  </div>
+  <div class="hero-emoji">🥩</div>
+</header>
+
+<!-- ===== CALCULATOR ===== -->
+<main id="calculadora" class="calc-wrap">
+  <div class="container">
+
+    <!-- Step indicator -->
+    <nav class="steps-nav" aria-label="Passos do formulário">
+      <div class="sn-item active" id="sni-1"><div class="sn-dot">1</div><span>Convidados</span></div>
+      <div class="sn-line" id="snl-1"></div>
+      <div class="sn-item" id="sni-2"><div class="sn-dot">2</div><span>Preferências</span></div>
+      <div class="sn-line" id="snl-2"></div>
+      <div class="sn-item" id="sni-3"><div class="sn-dot">3</div><span>Resultado</span></div>
+    </nav>
+
+    <!-- STEP 1 -->
+    <section class="card" id="step1">
+      <h2>Quem vai pro churrasco? 🎉</h2>
+
+      <div class="counters-row">
+        <div class="ctr-group">
+          <label>👨 Adultos</label>
+          <div class="ctr">
+            <button class="ctr-btn" onclick="changeCount('adultos',-1)">−</button>
+            <input type="number" id="adultos" value="10" min="0" readonly>
+            <button class="ctr-btn" onclick="changeCount('adultos',1)">+</button>
+          </div>
+        </div>
+        <div class="ctr-group">
+          <label>👦 Crianças</label>
+          <div class="ctr">
+            <button class="ctr-btn" onclick="changeCount('criancas',-1)">−</button>
+            <input type="number" id="criancas" value="3" min="0" readonly>
+            <button class="ctr-btn" onclick="changeCount('criancas',1)">+</button>
+          </div>
+        </div>
+        <div class="ctr-group">
+          <label>⏱️ Horas</label>
+          <div class="ctr">
+            <button class="ctr-btn" onclick="changeCount('duracao',-1)">−</button>
+            <input type="number" id="duracao" value="5" min="1" max="24" readonly>
+            <button class="ctr-btn" onclick="changeCount('duracao',1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">🌅 Quando é o churras?</p>
+        <div class="pill-row">
+          <label class="pill"><input type="radio" name="horario" value="almoco"> ☀️ Almoço</label>
+          <label class="pill"><input type="radio" name="horario" value="janta" checked> 🌙 Jantar</label>
+          <label class="pill"><input type="radio" name="horario" value="diaall"> 🎊 Dia todo</label>
+        </div>
+      </div>
+
+      <button class="btn-next" onclick="goToStep(2)">Próximo →</button>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="card hidden" id="step2">
+      <h2>Como vai ser o churras? 🥩</h2>
+
+      <div class="field-group">
+        <p class="field-label">💰 Perfil do Churrasco</p>
+        <div class="profile-grid">
+          <label class="pcard">
+            <input type="radio" name="perfil" value="economico">
+            <div class="pcard-body"><span>🤑</span><strong>Econômico</strong><small>No capricho sem gastar demais</small></div>
+          </label>
+          <label class="pcard">
+            <input type="radio" name="perfil" value="medio" checked>
+            <div class="pcard-body"><span>😎</span><strong>Médio</strong><small>O churrasco clássico perfeito</small></div>
+          </label>
+          <label class="pcard">
+            <input type="radio" name="perfil" value="premium">
+            <div class="pcard-body"><span>👑</span><strong>Premium</strong><small>O churrasco dos sonhos</small></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">🍺 Quais bebidas? <em>(marque todas as que terão)</em></p>
+        <div class="check-row">
+          <label class="cpill"><input type="checkbox" id="cb-cerveja" checked> 🍺 Cerveja</label>
+          <label class="cpill"><input type="checkbox" id="cb-caipirinha"> 🍹 Caipirinha</label>
+          <label class="cpill"><input type="checkbox" id="cb-vinho"> 🍷 Vinho</label>
+          <label class="cpill"><input type="checkbox" id="cb-refri" checked> 🥤 Refrigerante</label>
+          <label class="cpill"><input type="checkbox" id="cb-agua" checked> 💧 Água</label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">🥦 Tem vegetarianos no rolo?</p>
+        <div class="pill-row">
+          <label class="pill"><input type="radio" name="veg" value="0" checked> 🥩 Não</label>
+          <label class="pill"><input type="radio" name="veg" value="20"> 🤏 Poucos</label>
+          <label class="pill"><input type="radio" name="veg" value="50"> ⚖️ Metade</label>
+          <label class="pill"><input type="radio" name="veg" value="100"> 🌱 Todos</label>
+        </div>
+      </div>
+
+      <div class="btn-pair">
+        <button class="btn-back" onclick="goToStep(1)">← Voltar</button>
+        <button class="btn-fire" onclick="calcular()">🔥 CALCULAR!</button>
+      </div>
+    </section>
+
+    <!-- STEP 3 – RESULTS -->
+    <section class="card hidden" id="step3">
+
+      <div id="score-banner" class="score-banner"></div>
+      <div id="quick-summary" class="quick-summary"></div>
+
+      <div class="res-block" id="bloco-carnes">
+        <h3 class="res-title">🥩 Carnes</h3>
+        <div class="res-grid" id="grid-carnes"></div>
+      </div>
+
+      <div class="res-block" id="bloco-bebidas">
+        <h3 class="res-title">🍺 Bebidas &amp; Gelo</h3>
+        <div class="res-grid" id="grid-bebidas"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">🥗 Acompanhamentos</h3>
+        <div class="res-grid" id="grid-acomp"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">🪵 Carvão &amp; Churrasqueira</h3>
+        <div class="res-grid" id="grid-carvao"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">💰 Estimativa de Custo</h3>
+        <div id="budget-box" class="budget-box"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">🛒 Lista de Compras</h3>
+        <div id="shopping-list" class="shopping-list"></div>
+        <div class="share-row">
+          <button class="sbtn wpp" onclick="shareWhatsApp()">📱 WhatsApp</button>
+          <button class="sbtn copy" onclick="copyList()">📋 Copiar</button>
+          <button class="sbtn again" onclick="goToStep(1)">🔄 Recalcular</button>
+        </div>
+        <div id="copy-toast" class="copy-toast">✅ Lista copiada!</div>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<!-- ===== TIPS ===== -->
+<section class="tips-wrap">
+  <div class="container">
+    <h2 class="section-h">🔥 Dicas do Mestre Churrasqueiro</h2>
+    <div class="tips-grid">
+      <div class="tip"><span class="tip-ico">⏰</span><h3>Acenda cedo</h3><p>Acenda o carvão 40–50 min antes. A brasa ideal tem cinza por fora e brasa viva por dentro.</p></div>
+      <div class="tip"><span class="tip-ico">🧂</span><h3>Sal grosso é lei</h3><p>Tempere com sal grosso antes de ir ao fogo. Retire o excesso com a mão antes de servir.</p></div>
+      <div class="tip"><span class="tip-ico">🌡️</span><h3>Teste da mão</h3><p>Mão a 15 cm da grelha: se aguentar 5 segundos, a temperatura está ideal para carnes vermelhas.</p></div>
+      <div class="tip"><span class="tip-ico">🥩</span><h3>Ordem certa</h3><p>Linguiça e frango primeiro. Picanha e costela entram quando a brasa está no pico.</p></div>
+      <div class="tip"><span class="tip-ico">🍺</span><h3>Cerveja gelada de verdade</h3><p>Sal grosso no gelo do isopor: gelará muito mais rápido. A temperatura ideal é −2 °C.</p></div>
+      <div class="tip"><span class="tip-ico">🪵</span><h3>Carvão de qualidade</h3><p>Carvão vegetal nativo dura mais e produz menos fumaça. Fuja do carvão com serragem!</p></div>
+      <div class="tip"><span class="tip-ico">🔪</span><h3>Faca afiada</h3><p>Faca cega destrói a carne. Passe numa chaira ou pedra de afiar antes do churras.</p></div>
+      <div class="tip"><span class="tip-ico">😴</span><h3>Deixe descansar</h3><p>Após tirar do fogo, deixe a carne descansar 3–5 min antes de cortar. Fica muito mais suculenta.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-wrap">
+  <div class="container">
+    <h2 class="section-h">❓ Perguntas Frequentes</h2>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>Quanto de carne por pessoa num churrasco?</summary>
+        <p>Em média, 400–500 g por adulto para um churrasco de 4–6 horas. Para eventos mais longos ou festas grandes, calcule 600–800 g. Crianças consomem cerca de metade da porção adulta.</p>
+      </details>
+      <details class="faq">
+        <summary>Quantas cervejas por pessoa num churrasco?</summary>
+        <p>A média brasileira é de 4–6 long necks (600 ml) por adulto num evento de 5 horas. Varia muito com o calor e o perfil dos convidados.</p>
+      </details>
+      <details class="faq">
+        <summary>Quanto de carvão para o churrasco?</summary>
+        <p>Regra geral: 1 saco de 5 kg para cada 4–5 kg de carne. Para um churrasco médio de 10 pessoas, 1 a 2 sacos de 5 kg costumam bastar.</p>
+      </details>
+      <details class="faq">
+        <summary>Qual a ordem certa das carnes na grelha?</summary>
+        <p>Linguiça e frango primeiro (precisam de mais tempo), depois costela, e por último picanha e maminha, que preferem brasa forte e tempo menor.</p>
+      </details>
+      <details class="faq">
+        <summary>Como calcular o churrasco para muitas pessoas?</summary>
+        <p>Use a nossa calculadora acima! Informe o número de adultos e crianças, a duração e o perfil, e a ferramenta gera automaticamente a lista completa com carnes, bebidas, carvão e acompanhamentos.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-brand">🔥 Churrascômetro</p>
+    <p>Feito com amor e fome no Brasil 🇧🇷 — Compartilhe com seus amigos e nunca mais deixe faltar carne!</p>
+    <p class="footer-copy">© 2025 Churrascômetro</p>
+  </div>
+</footer>
+
+<script>/* ============================================================
+   CHURRASCÔMETRO – script.js
+   Calculadora de churrasco mais completa do Brasil 🔥
+   ============================================================ */
+
+'use strict';
+
+/* ----------------------------------------------------------------
+   DADOS BASE
+   Todos os valores por adulto, perfil médio, 5 horas de churrasco
+----------------------------------------------------------------- */
+const BASE = {
+  // Carnes (g por adulto)
+  carnes: {
+    economico: {
+      picanha:  150,
+      costela:  150,
+      frango:   130,
+      linguica: 100,
+    },
+    medio: {
+      picanha:  250,
+      costela:  220,
+      frango:   180,
+      linguica: 130,
+    },
+    premium: {
+      picanha:   350,
+      costela:   280,
+      frango:    180,
+      linguica:  130,
+      maminha:   180,
+      queijocualho: 100,
+    },
+  },
+
+  // Cervejas (latas 350 ml por adulto)
+  cerveja: { economico: 3, medio: 5, premium: 7 },
+
+  // Refrigerante (ml por pessoa)
+  refri:   { economico: 350, medio: 550, premium: 800 },
+
+  // Água (ml por pessoa)
+  agua:    { economico: 500, medio: 700, premium: 1000 },
+
+  // Acompanhamentos (g por pessoa)
+  acomp: {
+    farofa:    { economico: 80,  medio: 100, premium: 120 },
+    maionese:  { economico: 40,  medio: 55,  premium: 70  },
+    paodeAlho: { economico: 1,   medio: 2,   premium: 3   }, // unidades
+  },
+
+  // Preços médios 2025 (BRL)
+  precos: {
+    picanha:      100, // R$/kg
+    costela:       50,
+    frango:        23,
+    linguica:      30,
+    maminha:       72,
+    queijocualho:  60,
+    legumes:       15,
+    halloumi:      55,
+    cerveja350:     5, // R$/lata
+    vinho:         45, // R$/garrafa 750ml
+    refri2L:       10,
+    agua500:        2.5,
+    gelo5kg:       10,
+    limao:          1,   // por unidade
+    cachaca700:    32,
+    farofa500g:    12,
+    maionese250:    8,
+    paodeAlho:      4,   // por unidade
+    tomate:         4,   // R$/kg
+    cebola:         5,   // R$/kg
+    carvao5kg:     30,
+  },
+};
+
+/* ----------------------------------------------------------------
+   DADOS DO RESULTADO (globais para o compartilhamento)
+----------------------------------------------------------------- */
+let resultData = {};
+
+/* ----------------------------------------------------------------
+   NAVEGAÇÃO
+----------------------------------------------------------------- */
+function goToStep(n) {
+  if (n === 2) {
+    const adultos = parseInt(document.getElementById('adultos').value);
+    if (adultos < 1) {
+      alert('Adicione pelo menos 1 adulto para continuar. 😄');
+      return;
+    }
+  }
+
+  [1, 2, 3].forEach(i => {
+    const el = document.getElementById('step' + i);
+    if (el) el.classList.toggle('hidden', i !== n);
+
+    const sni = document.getElementById('sni-' + i);
+    if (sni) {
+      sni.classList.toggle('active', i === n);
+      sni.classList.toggle('done',   i < n);
+    }
+
+    const snl = document.getElementById('snl-' + i);
+    if (snl) snl.classList.toggle('done', i < n);
+  });
+
+  if (n > 1) window.scrollTo({ top: document.getElementById('calculadora').offsetTop - 20, behavior: 'smooth' });
+}
+
+/* ----------------------------------------------------------------
+   COUNTER INPUTS
+----------------------------------------------------------------- */
+function changeCount(id, delta) {
+  const input = document.getElementById(id);
+  const min = parseInt(input.min ?? 0);
+  const max = parseInt(input.max ?? 9999);
+  const val = Math.min(max, Math.max(min, (parseInt(input.value) || 0) + delta));
+  input.value = val;
+}
+
+/* ----------------------------------------------------------------
+   HELPERS
+----------------------------------------------------------------- */
+function kgStr(grams) {
+  if (grams >= 1000) {
+    const kg = (grams / 1000).toFixed(1).replace('.', ',');
+    return kg + ' kg';
+  }
+  return grams + ' g';
+}
+
+function fmt(n) { return n.toLocaleString('pt-BR'); }
+
+function fmtBRL(n) { return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
+
+/* ----------------------------------------------------------------
+   CORE CALCULATION
+----------------------------------------------------------------- */
+function calcular() {
+  const adultos  = parseInt(document.getElementById('adultos').value)  || 0;
+  const criancas = parseInt(document.getElementById('criancas').value) || 0;
+  const duracao  = parseInt(document.getElementById('duracao').value)  || 5;
+  const horario  = document.querySelector('input[name="horario"]:checked').value;
+  const perfil   = document.querySelector('input[name="perfil"]:checked').value;
+  const vegPct   = parseInt(document.querySelector('input[name="veg"]:checked').value);
+
+  const temCerveja    = document.getElementById('cb-cerveja').checked;
+  const temCaipirinha = document.getElementById('cb-caipirinha').checked;
+  const temVinho      = document.getElementById('cb-vinho').checked;
+  const temRefri      = document.getElementById('cb-refri').checked;
+  const temAgua       = document.getElementById('cb-agua').checked;
+
+  // Multiplicador de duração
+  let durMult = 1;
+  if      (horario === 'diaall') durMult = 1.7;
+  else if (duracao <= 3)          durMult = 0.75;
+  else if (duracao > 6)           durMult = 1.3;
+
+  const vegRatio  = vegPct / 100;
+  const carneiros  = adultos * (1 - vegRatio);   // adultos não-vegetarianos
+  const carneirosCriancas = criancas * (1 - vegRatio);
+  const totalPessoas = adultos + criancas;
+
+  // ---- CARNES ----
+  const receitaCarne = BASE.carnes[perfil];
+  const carnes = {};
+  let totalCarneGramas = 0;
+
+  for (const [corte, gPP] of Object.entries(receitaCarne)) {
+    const g = Math.round((carneiros * gPP + carneirosCriancas * gPP * 0.45) * durMult);
+    carnes[corte] = g;
+    totalCarneGramas += g;
+  }
+
+  // Opções vegetarianas
+  const vegAdultos = adultos * vegRatio;
+  if (vegAdultos > 0) {
+    carnes.legumes    = Math.round(vegAdultos * (perfil === 'premium' ? 350 : 280) * durMult);
+    if (perfil !== 'economico') carnes.halloumi = Math.round(vegAdultos * 150 * durMult);
+    totalCarneGramas += (carnes.legumes || 0) + (carnes.halloumi || 0);
+  }
+
+  // ---- BEBIDAS ----
+  const bebidas = {};
+
+  if (temCerveja && adultos > 0) {
+    const latas = Math.round(adultos * BASE.cerveja[perfil] * durMult);
+    bebidas.cerveja = { latas, longnecks: Math.ceil(latas * 350 / 600) };
+  }
+
+  if (temCaipirinha && adultos > 0) {
+    const porcoes = Math.round(adultos * (horario === 'diaall' ? 4 : 2) * durMult);
+    bebidas.caipirinha = {
+      limoes:   Math.ceil(porcoes / 2),
+      cachaca:  Math.ceil(porcoes * 50 / 700), // garrafas 700ml
+      acucar:   Math.round(porcoes * 15),       // g
+    };
+  }
+
+  if (temVinho && adultos > 0) {
+    bebidas.vinho = { garrafas: Math.ceil(adultos / 4 * durMult) };
+  }
+
+  if (temRefri) {
+    const mlTotal = Math.round(totalPessoas * BASE.refri[perfil] * durMult);
+    bebidas.refri = { ml: mlTotal, garrafas2L: Math.ceil(mlTotal / 2000) };
+  }
+
+  if (temAgua) {
+    const mlTotal = Math.round(totalPessoas * BASE.agua[perfil] * durMult);
+    bebidas.agua = { ml: mlTotal, garrafas500: Math.ceil(mlTotal / 500) };
+  }
+
+  // Gelo
+  const geloKg = Math.max(2, Math.ceil(totalPessoas * (horario === 'diaall' ? 0.8 : 0.5)));
+  bebidas.gelo = { kg: geloKg };
+
+  // ---- ACOMPANHAMENTOS ----
+  const acomp = {};
+  const baseAcomp = BASE.acomp;
+
+  acomp.farofa    = Math.round(totalPessoas * baseAcomp.farofa[perfil]    * durMult);
+  acomp.maionese  = Math.round(totalPessoas * baseAcomp.maionese[perfil]  * durMult);
+  acomp.paodeAlho = Math.round(totalPessoas * baseAcomp.paodeAlho[perfil] * durMult);
+
+  // Vinagrete
+  acomp.tomate = Math.ceil(totalPessoas / 3);
+  acomp.cebola = Math.ceil(totalPessoas / 4);
+
+  if (perfil !== 'economico') acomp.arroz = Math.round(totalPessoas * 80);
+
+  if (perfil === 'premium') {
+    acomp.mandioca = Math.round(totalPessoas * 150);
+    acomp.salada   = Math.ceil(totalPessoas / 5); // pés de alface
+  }
+
+  // ---- CARVÃO ----
+  const carvaoKg   = Math.max(3, Math.ceil(totalCarneGramas / 1000 * 1.3));
+  const carvaoSacos = Math.ceil(carvaoKg / 5);
+
+  // ---- ORÇAMENTO ----
+  const p = BASE.precos;
+  let custoMin = 0, custoMax = 0;
+
+  // Carnes
+  const precoCarne = {
+    picanha:      { min: 80,  max: 130 },
+    costela:      { min: 40,  max: 65  },
+    frango:       { min: 18,  max: 28  },
+    linguica:     { min: 22,  max: 40  },
+    maminha:      { min: 58,  max: 85  },
+    queijocualho: { min: 45,  max: 80  },
+    legumes:      { min: 8,   max: 20  },
+    halloumi:     { min: 40,  max: 75  },
+  };
+
+  for (const [corte, g] of Object.entries(carnes)) {
+    if (precoCarne[corte]) {
+      custoMin += (g / 1000) * precoCarne[corte].min;
+      custoMax += (g / 1000) * precoCarne[corte].max;
+    }
+  }
+
+  // Bebidas
+  if (bebidas.cerveja) {
+    custoMin += bebidas.cerveja.latas * 4;
+    custoMax += bebidas.cerveja.latas * 7;
+  }
+  if (bebidas.caipirinha) {
+    custoMin += bebidas.caipirinha.cachaca * 20;
+    custoMax += bebidas.caipirinha.cachaca * 50;
+    custoMin += bebidas.caipirinha.limoes  * 0.7;
+    custoMax += bebidas.caipirinha.limoes  * 1.5;
+  }
+  if (bebidas.vinho) {
+    custoMin += bebidas.vinho.garrafas * 30;
+    custoMax += bebidas.vinho.garrafas * 80;
+  }
+  if (bebidas.refri) {
+    custoMin += bebidas.refri.garrafas2L * 7;
+    custoMax += bebidas.refri.garrafas2L * 14;
+  }
+  if (bebidas.agua) {
+    custoMin += bebidas.agua.garrafas500 * 2;
+    custoMax += bebidas.agua.garrafas500 * 4;
+  }
+  custoMin += geloKg * 1.5;
+  custoMax += geloKg * 2.5;
+
+  // Acompanhamentos
+  custoMin += (acomp.farofa / 500)   * 8;
+  custoMax += (acomp.farofa / 500)   * 18;
+  custoMin += (acomp.maionese / 250) * 6;
+  custoMax += (acomp.maionese / 250) * 12;
+  custoMin += acomp.paodeAlho * 3;
+  custoMax += acomp.paodeAlho * 5;
+  custoMin += acomp.tomate   * 0.6;
+  custoMax += acomp.tomate   * 1.2;
+  custoMin += acomp.cebola   * 0.5;
+  custoMax += acomp.cebola   * 1.0;
+
+  // Carvão
+  custoMin += carvaoSacos * 22;
+  custoMax += carvaoSacos * 42;
+
+  custoMin = Math.round(custoMin);
+  custoMax = Math.round(custoMax);
+
+  // ---- SCORE ----
+  const gPorPessoa = adultos > 0 ? totalCarneGramas / adultos : 0;
+  let score = '';
+  if (vegPct === 100) {
+    score = '🌱 Churrasco vegetariano! Que isso, né? Mas tá valendo! 💚';
+  } else if (gPorPessoa < 350) {
+    score = '😅 Tá com vergonha de churrasco, né? Bota mais carne aí!';
+  } else if (gPorPessoa < 550) {
+    score = '👍 Churrasco do bem! Vai dar certo sim!';
+  } else if (gPorPessoa < 800) {
+    score = '🥩 Churrasqueiro de respeito! Esse vai ser épico!';
+  } else {
+    score = '👑🔥 REI DO CHURRASCO! Churrasco de sonho confirmado!';
+  }
+
+  resultData = { adultos, criancas, duracao, horario, perfil, vegPct, carnes, bebidas, acomp, carvao: { kg: carvaoKg, sacos: carvaoSacos }, orcamento: { min: custoMin, max: custoMax }, score, totalCarneGramas, temCerveja, temCaipirinha, temVinho, temRefri, temAgua };
+
+  renderResults(resultData);
+  goToStep(3);
+}
+
+/* ----------------------------------------------------------------
+   RENDER RESULTS
+----------------------------------------------------------------- */
+function renderResults(d) {
+  // Score banner
+  document.getElementById('score-banner').textContent = d.score;
+
+  // Quick summary
+  const qs = document.getElementById('quick-summary');
+  const total = d.adultos + d.criancas;
+  qs.innerHTML = `
+    <div class="qs-chip">👥 ${total} pessoa${total !== 1 ? 's' : ''}</div>
+    <div class="qs-chip">⏱️ ${d.duracao}h</div>
+    <div class="qs-chip">🥩 ${(d.totalCarneGramas / 1000).toFixed(1).replace('.',',')} kg de carne</div>
+    <div class="qs-chip">💰 ${fmtBRL(d.orcamento.min)}–${fmtBRL(d.orcamento.max)}</div>
+  `;
+
+  // ---- CARNES ----
+  const carneLabels = {
+    picanha:      { icon: '🥩', label: 'Picanha' },
+    costela:      { icon: '🦴', label: 'Costela' },
+    frango:       { icon: '🍗', label: 'Frango' },
+    linguica:     { icon: '🌭', label: 'Linguiça' },
+    maminha:      { icon: '🥩', label: 'Maminha' },
+    queijocualho: { icon: '🧀', label: 'Queijo Coalho' },
+    legumes:      { icon: '🥦', label: 'Legumes' },
+    halloumi:     { icon: '🧀', label: 'Halloumi' },
+  };
+
+  let carnesHtml = '';
+  for (const [corte, g] of Object.entries(d.carnes)) {
+    if (g <= 0) continue;
+    const info = carneLabels[corte] || { icon: '🥩', label: corte };
+    const pacotes = Math.ceil(g / 1000); // pacotes de 1kg aprox
+    carnesHtml += `
+      <div class="res-card">
+        <span class="rc-icon">${info.icon}</span>
+        <div class="rc-name">${info.label}</div>
+        <div class="rc-amount">${kgStr(g)}</div>
+        <div class="rc-note">≈ ${pacotes} pacote${pacotes !== 1 ? 's' : ''} de 1 kg</div>
+      </div>`;
+  }
+
+  const totalKg = (d.totalCarneGramas / 1000).toFixed(1).replace('.', ',');
+  carnesHtml += `
+    <div class="res-card" style="background:rgba(255,107,53,0.08);border-color:rgba(255,107,53,0.4)">
+      <span class="rc-icon">🔥</span>
+      <div class="rc-name">TOTAL CARNE</div>
+      <div class="rc-amount">${totalKg} kg</div>
+      <div class="rc-unit">para ${d.adultos + d.criancas} pessoas</div>
+    </div>`;
+
+  document.getElementById('grid-carnes').innerHTML = carnesHtml;
+
+  // ---- BEBIDAS ----
+  let bebidasHtml = '';
+
+  if (d.bebidas.cerveja) {
+    const { latas, longnecks } = d.bebidas.cerveja;
+    const caixas = Math.ceil(latas / 24);
+    bebidasHtml += resCard('🍺', 'Cerveja', latas + ' latas', `= ${longnecks} long necks · ${caixas} cx`);
+  }
+
+  if (d.bebidas.caipirinha) {
+    const { limoes, cachaca, acucar } = d.bebidas.caipirinha;
+    bebidasHtml += resCard('🍹', 'Caipirinha', limoes + ' limões', `${cachaca} garrafa${cachaca !== 1 ? 's' : ''} cachaça · ${acucar}g açúcar`);
+  }
+
+  if (d.bebidas.vinho) {
+    const g = d.bebidas.vinho.garrafas;
+    bebidasHtml += resCard('🍷', 'Vinho', g + ' garrafa' + (g !== 1 ? 's' : ''), '750 ml cada');
+  }
+
+  if (d.bebidas.refri) {
+    const { garrafas2L } = d.bebidas.refri;
+    bebidasHtml += resCard('🥤', 'Refrigerante', garrafas2L + ' garrafa' + (garrafas2L !== 1 ? 's' : ''), '2 L cada');
+  }
+
+  if (d.bebidas.agua) {
+    const { garrafas500 } = d.bebidas.agua;
+    bebidasHtml += resCard('💧', 'Água', garrafas500 + ' garrafa' + (garrafas500 !== 1 ? 's' : ''), '500 ml cada');
+  }
+
+  const gelo = d.bebidas.gelo.kg;
+  const sacoGelo = Math.ceil(gelo / 5);
+  bebidasHtml += resCard('🧊', 'Gelo', gelo + ' kg', `${sacoGelo} saco${sacoGelo !== 1 ? 's' : ''} de 5 kg`);
+
+  document.getElementById('grid-bebidas').innerHTML = bebidasHtml;
+
+  // ---- ACOMPANHAMENTOS ----
+  const a = d.acomp;
+  let acompHtml = '';
+
+  const sacFarofa = Math.ceil(a.farofa / 500);
+  acompHtml += resCard('🍚', 'Farofa', kgStr(a.farofa), `${sacFarofa} pct de 500 g`);
+
+  const tuboMaio = Math.ceil(a.maionese / 250);
+  acompHtml += resCard('🥛', 'Maionese', kgStr(a.maionese), `${tuboMaio} pote${tuboMaio !== 1 ? 's' : ''} de 250 g`);
+
+  acompHtml += resCard('🧄', 'Pão de Alho', a.paodeAlho + ' unid.', 'congelado/artesanal');
+
+  acompHtml += resCard('🍅', 'Tomate', a.tomate + ' unid.', 'vinagrete');
+  acompHtml += resCard('🧅', 'Cebola',  a.cebola  + ' unid.', 'vinagrete');
+
+  if (a.arroz) {
+    acompHtml += resCard('🍚', 'Arroz',     kgStr(a.arroz),    'cru (rende o dobro)');
+  }
+  if (a.mandioca) {
+    acompHtml += resCard('🌿', 'Mandioca',  kgStr(a.mandioca), 'descascada e cozida');
+  }
+  if (a.salada) {
+    acompHtml += resCard('🥬', 'Alface',    a.salada + ' pé' + (a.salada !== 1 ? 's' : ''), 'salada verde');
+  }
+
+  document.getElementById('grid-acomp').innerHTML = acompHtml;
+
+  // ---- CARVÃO ----
+  const { kg, sacos } = d.carvao;
+  let carvaoHtml = resCard('🪵', 'Carvão', kg + ' kg', `${sacos} saco${sacos !== 1 ? 's' : ''} de 5 kg`);
+  carvaoHtml += resCard('🔥', 'Acendedor', '1 unid.', 'acendedor em pasta ou gel');
+  carvaoHtml += resCard('🔪', 'Faca', '1 boa faca', 'bem afiada!');
+  carvaoHtml += resCard('🧂', 'Sal Grosso', '1 kg', 'tempero básico e honesto');
+  document.getElementById('grid-carvao').innerHTML = carvaoHtml;
+
+  // ---- ORÇAMENTO ----
+  const oc = d.orcamento;
+  const porPessoa = Math.round((oc.min + oc.max) / 2 / (d.adultos + d.criancas || 1));
+  document.getElementById('budget-box').innerHTML = `
+    <div class="budget-range">${fmtBRL(oc.min)} – ${fmtBRL(oc.max)}</div>
+    <div class="budget-breakdown">
+      <div class="budget-item"><span>Por pessoa (média)</span><span>${fmtBRL(porPessoa)}</span></div>
+      <div class="budget-item"><span>Só as carnes</span><span>${fmtBRL(Math.round(d.totalCarneGramas / 1000 * 65))}</span></div>
+    </div>
+    <div class="budget-note">* Estimativa com base nos preços médios de supermercados brasileiros em 2025. Pode variar por região.</div>
+  `;
+
+  // ---- LISTA DE COMPRAS ----
+  buildShoppingList(d);
+}
+
+function resCard(icon, name, amount, note) {
+  return `
+    <div class="res-card">
+      <span class="rc-icon">${icon}</span>
+      <div class="rc-name">${name}</div>
+      <div class="rc-amount">${amount}</div>
+      <div class="rc-unit">${note}</div>
+    </div>`;
+}
+
+/* ----------------------------------------------------------------
+   LISTA DE COMPRAS
+----------------------------------------------------------------- */
+function buildShoppingList(d) {
+  const carneLabels = {
+    picanha: 'Picanha', costela: 'Costela', frango: 'Frango (coxa/sobrecoxa)',
+    linguica: 'Linguiça', maminha: 'Maminha', queijocualho: 'Queijo Coalho',
+    legumes: 'Legumes para grelhar', halloumi: 'Halloumi',
+  };
+
+  let sections = [];
+
+  // Carnes
+  let carneItems = [];
+  for (const [corte, g] of Object.entries(d.carnes)) {
+    if (g > 0) carneItems.push({ name: carneLabels[corte] || corte, qty: kgStr(g) });
+  }
+  if (carneItems.length) sections.push({ title: '🥩 Carnes', items: carneItems });
+
+  // Bebidas
+  let bebItems = [];
+  if (d.bebidas.cerveja)    bebItems.push({ name: 'Cerveja (latas 350 ml)', qty: d.bebidas.cerveja.latas + ' latas' });
+  if (d.bebidas.caipirinha) {
+    bebItems.push({ name: 'Limão', qty: d.bebidas.caipirinha.limoes + ' unid.' });
+    bebItems.push({ name: 'Cachaça', qty: d.bebidas.caipirinha.cachaca + ' garrafa(s)' });
+    bebItems.push({ name: 'Açúcar', qty: d.bebidas.caipirinha.acucar + ' g' });
+  }
+  if (d.bebidas.vinho)      bebItems.push({ name: 'Vinho', qty: d.bebidas.vinho.garrafas + ' garrafa(s)' });
+  if (d.bebidas.refri)      bebItems.push({ name: 'Refrigerante (2 L)', qty: d.bebidas.refri.garrafas2L + ' garrafas' });
+  if (d.bebidas.agua)       bebItems.push({ name: 'Água (500 ml)', qty: d.bebidas.agua.garrafas500 + ' garrafas' });
+  bebItems.push({ name: 'Gelo', qty: d.bebidas.gelo.kg + ' kg' });
+  if (bebItems.length) sections.push({ title: '🍺 Bebidas & Gelo', items: bebItems });
+
+  // Acomp
+  let aItems = [
+    { name: 'Farofa', qty: kgStr(d.acomp.farofa) },
+    { name: 'Maionese', qty: kgStr(d.acomp.maionese) },
+    { name: 'Pão de alho', qty: d.acomp.paodeAlho + ' unid.' },
+    { name: 'Tomate', qty: d.acomp.tomate + ' unid.' },
+    { name: 'Cebola', qty: d.acomp.cebola + ' unid.' },
+    { name: 'Coentro/cheiro-verde', qty: '1 maço' },
+  ];
+  if (d.acomp.arroz)    aItems.push({ name: 'Arroz', qty: kgStr(d.acomp.arroz) });
+  if (d.acomp.mandioca) aItems.push({ name: 'Mandioca', qty: kgStr(d.acomp.mandioca) });
+  sections.push({ title: '🥗 Acompanhamentos', items: aItems });
+
+  // Carvão & utensílios
+  sections.push({ title: '🪵 Carvão & Utensílios', items: [
+    { name: 'Carvão vegetal', qty: d.carvao.sacos + ' saco(s) de 5 kg' },
+    { name: 'Acendedor', qty: '1 unid.' },
+    { name: 'Sal grosso', qty: '1 kg' },
+    { name: 'Temperos (alho, pimenta…)', qty: 'a gosto' },
+  ]});
+
+  let html = '';
+  sections.forEach(sec => {
+    let rows = sec.items.map(i =>
+      `<div class="sl-item"><span>${i.name}</span><span>${i.qty}</span></div>`
+    ).join('');
+    html += `<div class="sl-category"><h4>${sec.title}</h4>${rows}</div>`;
+  });
+
+  document.getElementById('shopping-list').innerHTML = html;
+}
+
+/* ----------------------------------------------------------------
+   COMPARTILHAR NO WHATSAPP
+----------------------------------------------------------------- */
+function shareWhatsApp() {
+  const d = resultData;
+  if (!d.adultos) return;
+
+  const totalKg = (d.totalCarneGramas / 1000).toFixed(1).replace('.', ',');
+  const total = d.adultos + d.criancas;
+
+  let lines = [
+    `🔥 *CHURRASCÔMETRO* 🔥`,
+    ``,
+    `Churrasco para *${total} pessoas* (${d.duracao}h) — perfil *${d.perfil}*`,
+    ``,
+    `🥩 *Carnes:*`,
+  ];
+
+  const carneLabels = {
+    picanha: 'Picanha', costela: 'Costela', frango: 'Frango',
+    linguica: 'Linguiça', maminha: 'Maminha', queijocualho: 'Queijo Coalho',
+    legumes: 'Legumes', halloumi: 'Halloumi',
+  };
+
+  for (const [corte, g] of Object.entries(d.carnes)) {
+    if (g > 0) lines.push(`• ${carneLabels[corte] || corte}: ${kgStr(g)}`);
+  }
+  lines.push(`• *TOTAL: ${totalKg} kg*`);
+  lines.push(``);
+
+  const beb = d.bebidas;
+  lines.push(`🍺 *Bebidas:*`);
+  if (beb.cerveja)    lines.push(`• Cerveja: ${beb.cerveja.latas} latas`);
+  if (beb.caipirinha) lines.push(`• Limão: ${beb.caipirinha.limoes} unid. · Cachaça: ${beb.caipirinha.cachaca} garrafa(s)`);
+  if (beb.vinho)      lines.push(`• Vinho: ${beb.vinho.garrafas} garrafa(s)`);
+  if (beb.refri)      lines.push(`• Refrigerante: ${beb.refri.garrafas2L} garrafa(s) 2L`);
+  if (beb.agua)       lines.push(`• Água: ${beb.agua.garrafas500} garrafinhas`);
+  lines.push(`• Gelo: ${beb.gelo.kg} kg`);
+  lines.push(``);
+
+  lines.push(`🪵 *Carvão:* ${d.carvao.kg} kg (${d.carvao.sacos} saco${d.carvao.sacos !== 1 ? 's' : ''})`);
+  lines.push(`💰 *Estimativa:* ${fmtBRL(d.orcamento.min)} – ${fmtBRL(d.orcamento.max)}`);
+  lines.push(``);
+  lines.push(`Calculado no Churrascômetro 🔥`);
+
+  const text = encodeURIComponent(lines.join('\n'));
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+}
+
+/* ----------------------------------------------------------------
+   COPIAR LISTA
+----------------------------------------------------------------- */
+function copyList() {
+  const d = resultData;
+  if (!d.adultos) return;
+
+  const el = document.getElementById('shopping-list');
+  const items = el.querySelectorAll('.sl-item');
+  const cats  = el.querySelectorAll('.sl-category h4');
+
+  let text = '🛒 LISTA DE COMPRAS – CHURRASCÔMETRO\n\n';
+  let catIdx = 0;
+  el.querySelectorAll('.sl-category').forEach(cat => {
+    const h = cat.querySelector('h4');
+    if (h) text += h.textContent + '\n';
+    cat.querySelectorAll('.sl-item').forEach(row => {
+      const spans = row.querySelectorAll('span');
+      text += `• ${spans[0].textContent}: ${spans[1].textContent}\n`;
+    });
+    text += '\n';
+  });
+
+  text += `\nCalculado no Churrascômetro 🔥`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copy-toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }).catch(() => {
+    // Fallback para browsers mais antigos
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const toast = document.getElementById('copy-toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  });
+}
+
+/* ----------------------------------------------------------------
+   SMOOTH SCROLL para âncoras
+----------------------------------------------------------------- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
