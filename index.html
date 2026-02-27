@@ -1,52 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Churrascômetro</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Churrascômetro 🔥 Calculadora de Churrasco – Quanto de Carne por Pessoa?</title>
+  <meta name="description" content="A calculadora de churrasco mais completa do Brasil! Calcule carne, cerveja, carvão, acompanhamentos e estimativa de custo. Grátis, rápido e certeiro!">
+  <meta name="keywords" content="calculadora churrasco, churrascometro, quanto de carne por pessoa, carne churrasco, cerveja churrasco, carvão churrasco, picanha, costela, churrasco brasil">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🔥 Churrascômetro – Nunca Mais Vai Faltar Carne!">
+  <meta property="og:description" content="Calcule tudo para o churrasco perfeito: carne, cerveja, carvão, acompanhamentos e estimativa de custo. Grátis!">
+  <meta property="og:locale" content="pt_BR">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Churrascômetro","description":"Calculadora de churrasco mais completa do Brasil","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"pt-BR","offers":{"@type":"Offer","price":"0"}}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
 
-    <div id="container">
-
-        <h1>Churrascômetro</h1>
-
-        <div class="formulario">
-                <label for="adultos">Número de Adultos</label>
-                <input type="number" id="adultos" name="adultos" placeholder="Digitar o número de adultos"/>
-        </div>
-
-        <div class="formulario">
-            <label for="criancas">Número de Crianças</label>
-            <input type="number" id="criancas" name="criancas" placeholder="Digitar o número de crianças"/>
-        </div>
-
-        <div class="formulario">
-            <label for="horas">Duração do Churrasco</label>
-            <input type="number" id="horas" name="horas" placeholder="Digitar o número de horas"/>
-        </div>
-
-        <button onclick="calcular()" id="calculate">Calcular</button>
-
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-flames">
+    <div class="flame f1"></div><div class="flame f2"></div><div class="flame f3"></div>
+    <div class="flame f4"></div><div class="flame f5"></div><div class="flame f6"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">🇧🇷 A calculadora de churrasco do Brasil</div>
+    <h1 class="hero-title">Churrasô<span class="brand-accent">metro</span></h1>
+    <p class="hero-sub">Nunca mais vai faltar carne. Nunca mais vai sobrar cerveja.</p>
+    <div class="hero-stats">
+      <div class="hstat"><span>6</span> tipos de carne</div>
+      <div class="hstat"><span>5</span> bebidas calculadas</div>
+      <div class="hstat"><span>100%</span> grátis</div>
     </div>
-        
-    <div id="resultado">
-        <p>Você vai precisar para seu churrasco:</p>
+    <a href="#calculadora" class="hero-cta">🔥 Calcular Meu Churrasco</a>
+  </div>
+  <div class="hero-emoji">🥩</div>
+</header>
 
-        
+<!-- ===== CALCULATOR ===== -->
+<main id="calculadora" class="calc-wrap">
+  <div class="container">
+
+    <!-- Step indicator -->
+    <nav class="steps-nav" aria-label="Passos do formulário">
+      <div class="sn-item active" id="sni-1"><div class="sn-dot">1</div><span>Convidados</span></div>
+      <div class="sn-line" id="snl-1"></div>
+      <div class="sn-item" id="sni-2"><div class="sn-dot">2</div><span>Preferências</span></div>
+      <div class="sn-line" id="snl-2"></div>
+      <div class="sn-item" id="sni-3"><div class="sn-dot">3</div><span>Resultado</span></div>
+    </nav>
+
+    <!-- STEP 1 -->
+    <section class="card" id="step1">
+      <h2>Quem vai pro churrasco? 🎉</h2>
+
+      <div class="counters-row">
+        <div class="ctr-group">
+          <label>👨 Adultos</label>
+          <div class="ctr">
+            <button class="ctr-btn" onclick="changeCount('adultos',-1)">−</button>
+            <input type="number" id="adultos" value="10" min="0" readonly>
+            <button class="ctr-btn" onclick="changeCount('adultos',1)">+</button>
+          </div>
+        </div>
+        <div class="ctr-group">
+          <label>👦 Crianças</label>
+          <div class="ctr">
+            <button class="ctr-btn" onclick="changeCount('criancas',-1)">−</button>
+            <input type="number" id="criancas" value="3" min="0" readonly>
+            <button class="ctr-btn" onclick="changeCount('criancas',1)">+</button>
+          </div>
+        </div>
+        <div class="ctr-group">
+          <label>⏱️ Horas</label>
+          <div class="ctr">
+            <button class="ctr-btn" onclick="changeCount('duracao',-1)">−</button>
+            <input type="number" id="duracao" value="5" min="1" max="24" readonly>
+            <button class="ctr-btn" onclick="changeCount('duracao',1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">🌅 Quando é o churras?</p>
+        <div class="pill-row">
+          <label class="pill"><input type="radio" name="horario" value="almoco"> ☀️ Almoço</label>
+          <label class="pill"><input type="radio" name="horario" value="janta" checked> 🌙 Jantar</label>
+          <label class="pill"><input type="radio" name="horario" value="diaall"> 🎊 Dia todo</label>
+        </div>
+      </div>
+
+      <button class="btn-next" onclick="goToStep(2)">Próximo →</button>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="card hidden" id="step2">
+      <h2>Como vai ser o churras? 🥩</h2>
+
+      <div class="field-group">
+        <p class="field-label">💰 Perfil do Churrasco</p>
+        <div class="profile-grid">
+          <label class="pcard">
+            <input type="radio" name="perfil" value="economico">
+            <div class="pcard-body"><span>🤑</span><strong>Econômico</strong><small>No capricho sem gastar demais</small></div>
+          </label>
+          <label class="pcard">
+            <input type="radio" name="perfil" value="medio" checked>
+            <div class="pcard-body"><span>😎</span><strong>Médio</strong><small>O churrasco clássico perfeito</small></div>
+          </label>
+          <label class="pcard">
+            <input type="radio" name="perfil" value="premium">
+            <div class="pcard-body"><span>👑</span><strong>Premium</strong><small>O churrasco dos sonhos</small></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">🍺 Quais bebidas? <em>(marque todas as que terão)</em></p>
+        <div class="check-row">
+          <label class="cpill"><input type="checkbox" id="cb-cerveja" checked> 🍺 Cerveja</label>
+          <label class="cpill"><input type="checkbox" id="cb-caipirinha"> 🍹 Caipirinha</label>
+          <label class="cpill"><input type="checkbox" id="cb-vinho"> 🍷 Vinho</label>
+          <label class="cpill"><input type="checkbox" id="cb-refri" checked> 🥤 Refrigerante</label>
+          <label class="cpill"><input type="checkbox" id="cb-agua" checked> 💧 Água</label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <p class="field-label">🥦 Tem vegetarianos no rolo?</p>
+        <div class="pill-row">
+          <label class="pill"><input type="radio" name="veg" value="0" checked> 🥩 Não</label>
+          <label class="pill"><input type="radio" name="veg" value="20"> 🤏 Poucos</label>
+          <label class="pill"><input type="radio" name="veg" value="50"> ⚖️ Metade</label>
+          <label class="pill"><input type="radio" name="veg" value="100"> 🌱 Todos</label>
+        </div>
+      </div>
+
+      <div class="btn-pair">
+        <button class="btn-back" onclick="goToStep(1)">← Voltar</button>
+        <button class="btn-fire" onclick="calcular()">🔥 CALCULAR!</button>
+      </div>
+    </section>
+
+    <!-- STEP 3 – RESULTS -->
+    <section class="card hidden" id="step3">
+
+      <div id="score-banner" class="score-banner"></div>
+      <div id="quick-summary" class="quick-summary"></div>
+
+      <div class="res-block" id="bloco-carnes">
+        <h3 class="res-title">🥩 Carnes</h3>
+        <div class="res-grid" id="grid-carnes"></div>
+      </div>
+
+      <div class="res-block" id="bloco-bebidas">
+        <h3 class="res-title">🍺 Bebidas &amp; Gelo</h3>
+        <div class="res-grid" id="grid-bebidas"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">🥗 Acompanhamentos</h3>
+        <div class="res-grid" id="grid-acomp"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">🪵 Carvão &amp; Churrasqueira</h3>
+        <div class="res-grid" id="grid-carvao"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">💰 Estimativa de Custo</h3>
+        <div id="budget-box" class="budget-box"></div>
+      </div>
+
+      <div class="res-block">
+        <h3 class="res-title">🛒 Lista de Compras</h3>
+        <div id="shopping-list" class="shopping-list"></div>
+        <div class="share-row">
+          <button class="sbtn wpp" onclick="shareWhatsApp()">📱 WhatsApp</button>
+          <button class="sbtn copy" onclick="copyList()">📋 Copiar</button>
+          <button class="sbtn again" onclick="goToStep(1)">🔄 Recalcular</button>
+        </div>
+        <div id="copy-toast" class="copy-toast">✅ Lista copiada!</div>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<!-- ===== TIPS ===== -->
+<section class="tips-wrap">
+  <div class="container">
+    <h2 class="section-h">🔥 Dicas do Mestre Churrasqueiro</h2>
+    <div class="tips-grid">
+      <div class="tip"><span class="tip-ico">⏰</span><h3>Acenda cedo</h3><p>Acenda o carvão 40–50 min antes. A brasa ideal tem cinza por fora e brasa viva por dentro.</p></div>
+      <div class="tip"><span class="tip-ico">🧂</span><h3>Sal grosso é lei</h3><p>Tempere com sal grosso antes de ir ao fogo. Retire o excesso com a mão antes de servir.</p></div>
+      <div class="tip"><span class="tip-ico">🌡️</span><h3>Teste da mão</h3><p>Mão a 15 cm da grelha: se aguentar 5 segundos, a temperatura está ideal para carnes vermelhas.</p></div>
+      <div class="tip"><span class="tip-ico">🥩</span><h3>Ordem certa</h3><p>Linguiça e frango primeiro. Picanha e costela entram quando a brasa está no pico.</p></div>
+      <div class="tip"><span class="tip-ico">🍺</span><h3>Cerveja gelada de verdade</h3><p>Sal grosso no gelo do isopor: gelará muito mais rápido. A temperatura ideal é −2 °C.</p></div>
+      <div class="tip"><span class="tip-ico">🪵</span><h3>Carvão de qualidade</h3><p>Carvão vegetal nativo dura mais e produz menos fumaça. Fuja do carvão com serragem!</p></div>
+      <div class="tip"><span class="tip-ico">🔪</span><h3>Faca afiada</h3><p>Faca cega destrói a carne. Passe numa chaira ou pedra de afiar antes do churras.</p></div>
+      <div class="tip"><span class="tip-ico">😴</span><h3>Deixe descansar</h3><p>Após tirar do fogo, deixe a carne descansar 3–5 min antes de cortar. Fica muito mais suculenta.</p></div>
     </div>
+  </div>
+</section>
 
+<!-- ===== FAQ ===== -->
+<section class="faq-wrap">
+  <div class="container">
+    <h2 class="section-h">❓ Perguntas Frequentes</h2>
+    <div class="faq-list">
+      <details class="faq">
+        <summary>Quanto de carne por pessoa num churrasco?</summary>
+        <p>Em média, 400–500 g por adulto para um churrasco de 4–6 horas. Para eventos mais longos ou festas grandes, calcule 600–800 g. Crianças consomem cerca de metade da porção adulta.</p>
+      </details>
+      <details class="faq">
+        <summary>Quantas cervejas por pessoa num churrasco?</summary>
+        <p>A média brasileira é de 4–6 long necks (600 ml) por adulto num evento de 5 horas. Varia muito com o calor e o perfil dos convidados.</p>
+      </details>
+      <details class="faq">
+        <summary>Quanto de carvão para o churrasco?</summary>
+        <p>Regra geral: 1 saco de 5 kg para cada 4–5 kg de carne. Para um churrasco médio de 10 pessoas, 1 a 2 sacos de 5 kg costumam bastar.</p>
+      </details>
+      <details class="faq">
+        <summary>Qual a ordem certa das carnes na grelha?</summary>
+        <p>Linguiça e frango primeiro (precisam de mais tempo), depois costela, e por último picanha e maminha, que preferem brasa forte e tempo menor.</p>
+      </details>
+      <details class="faq">
+        <summary>Como calcular o churrasco para muitas pessoas?</summary>
+        <p>Use a nossa calculadora acima! Informe o número de adultos e crianças, a duração e o perfil, e a ferramenta gera automaticamente a lista completa com carnes, bebidas, carvão e acompanhamentos.</p>
+      </details>
+    </div>
+  </div>
+</section>
 
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-brand">🔥 Churrascômetro</p>
+    <p>Feito com amor e fome no Brasil 🇧🇷 — Compartilhe com seus amigos e nunca mais deixe faltar carne!</p>
+    <p class="footer-copy">© 2025 Churrascômetro</p>
+  </div>
+</footer>
 
-
-   
-
-    <script src="./script.js"> </script>
+<script src="./script.js"></script>
 </body>
 </html>
